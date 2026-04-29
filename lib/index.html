@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>allinone trust — Your Business Online Today</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Karla:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A0F1E;
+    --navy2: #111827;
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --sky: #60A5FA;
+    --white: #F8FAFF;
+    --muted: #6B7A99;
+    --card: #131C30;
+    --border: rgba(96,165,250,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Karla', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  nav {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(10,15,30,0.95);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .logo span { color: var(--sky); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: white;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .hero {
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 90svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(96,165,250,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96,165,250,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .hero-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(37,99,235,0.15);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--sky);
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    animation: up 0.6s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 11vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    animation: up 0.6s 0.1s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 .highlight { color: var(--sky); display: block; }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 320px;
+    margin: 0 auto 2.5rem;
+    animation: up 0.6s 0.2s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-sub strong { color: var(--white); font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 300px;
+    animation: up 0.6s 0.3s ease both;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-main {
+    background: var(--blue);
+    color: white;
+    padding: 1.05rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.18s;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .btn-main:active { transform: scale(0.97); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .proof-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: var(--navy2);
+  }
+
+  .proof-item { text-align: center; }
+
+  .proof-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--sky);
+    display: block;
+  }
+
+  .proof-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .section {
+    padding: 3.5rem 1.5rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--sky);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .heading {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtext {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 0; }
+
+  .step-row { display: flex; gap: 1rem; position: relative; }
+
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .step-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    border: 2px solid rgba(59,130,246,0.3);
+  }
+
+  .step-line {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    margin: 4px 0;
+    min-height: 40px;
+  }
+
+  .step-content { padding-bottom: 2rem; padding-top: 0.4rem; }
+
+  .step-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .step-content p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .features-section {
+    padding: 3rem 1.5rem;
+    background: var(--navy2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .features-inner { max-width: 480px; margin: 0 auto; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.1rem;
+  }
+
+  .feature-icon { font-size: 1.4rem; margin-bottom: 0.6rem; display: block; }
+
+  .feature-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--white);
+  }
+
+  .feature-desc {
+    font-size: 0.73rem;
+    color: var(--muted);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .pricing-section {
+    padding: 3.5rem 1.5rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    background: var(--card);
+    border: 1px solid rgba(59,130,246,0.25);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .price-badge {
+    background: rgba(37,99,235,0.2);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--sky);
+    font-size: 0.68rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .price-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .price-amount span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+
+  .price-then {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .price-includes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .price-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.83rem;
+    color: var(--white);
+    font-weight: 300;
+  }
+
+  .price-item::before {
+    content: '✓';
+    color: var(--sky);
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* ── SHOPS SECTION ── */
+  .shops-section {
+    padding: 3rem 1.5rem;
+    background: var(--navy2);
+    border-top: 1px solid var(--border);
+  }
+
+  .shops-inner { max-width: 480px; margin: 0 auto; }
+
+  .shops-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  .shop-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.18s;
+    cursor: pointer;
+  }
+
+  .shop-card:active { transform: scale(0.98); border-color: var(--blue-light); }
+
+  .shop-thumb {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(96,165,250,0.1));
+  }
+
+  .shop-info { flex: 1; min-width: 0; }
+
+  .shop-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+    color: var(--white);
+  }
+
+  .shop-category {
+    font-size: 0.73rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .shop-status {
+    font-size: 0.68rem;
+    color: #22c55e;
+    font-weight: 500;
+    margin-top: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .shop-status::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .shop-arrow { color: var(--muted); font-size: 1.1rem; flex-shrink: 0; }
+
+  /* Empty slot */
+  .shop-card.empty {
+    opacity: 0.35;
+    cursor: default;
+    border-style: dashed;
+  }
+
+  .shop-card.empty:active { transform: none; border-color: var(--border); }
+
+  .empty-thumb {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed var(--border);
+  }
+
+  /* Loading state */
+  .shops-loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 300;
+  }
+
+  .spinner {
+    width: 24px; height: 24px;
+    border: 2px solid var(--border);
+    border-top-color: var(--sky);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 0.8rem;
+  }
+
+  /* Join CTA */
+  .join-card {
+    background: rgba(37,99,235,0.08);
+    border: 1px dashed rgba(59,130,246,0.3);
+    border-radius: 16px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    margin-top: 0.9rem;
+    transition: background 0.2s;
+  }
+
+  .join-card:active { background: rgba(37,99,235,0.15); }
+
+  .join-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: rgba(37,99,235,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .join-info { flex: 1; }
+
+  .join-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--sky);
+    margin-bottom: 0.15rem;
+  }
+
+  .join-sub {
+    font-size: 0.73rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .cta-section {
+    padding: 3.5rem 1.5rem 4rem;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-box {
+    background: var(--blue);
+    border-radius: 22px;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 250px; height: 250px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .cta-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-box p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--blue);
+    padding: 1.05rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Syne', sans-serif;
+    transition: transform 0.18s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-white:active { transform: scale(0.97); }
+
+  footer {
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo span { color: var(--sky); }
+
+  .footer-tagline { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+
+  @keyframes up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">allinone<span>trust</span></div>
+  <a href="#contact" class="nav-cta">Get Your Shop →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-flag">🇳🇦 Built for Namibia</div>
+  <h1>Your Business<span class="highlight">Online Today.</span></h1>
+  <p class="hero-sub">We build your own website so customers can find you, see your prices, and order — <strong>without the "price pls" DMs.</strong></p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-main">📲 Get My Shop — N$250</a>
+    <a href="#shops" class="btn-ghost">👀 See Live Shops</a>
+  </div>
+</section>
+
+<div class="proof-strip">
+  <div class="proof-item">
+    <span class="proof-num">24hrs</span>
+    <span class="proof-label">Site goes live</span>
+  </div>
+  <div class="proof-item">
+    <span class="proof-num">N$250</span>
+    <span class="proof-label">Once off setup</span>
+  </div>
+  <div class="proof-item">
+    <span class="proof-num">N$50</span>
+    <span class="proof-label">Per month only</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="eyebrow">Simple Process</div>
+  <h2 class="heading">How It Works</h2>
+  <p class="subtext">No tech skills needed. No laptop needed. We handle everything.</p>
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-left"><div class="step-dot">1</div><div class="step-line"></div></div>
+      <div class="step-content"><h4>WhatsApp us your info</h4><p>Send us your business name, what you sell, your prices, and a photo. That's it.</p></div>
+    </div>
+    <div class="step-row">
+      <div class="step-left"><div class="step-dot">2</div><div class="step-line"></div></div>
+      <div class="step-content"><h4>We build your shop</h4><p>We create your own website with your menu, prices, and a direct WhatsApp order button. Done within 24 hours.</p></div>
+    </div>
+    <div class="step-row">
+      <div class="step-left"><div class="step-dot">3</div><div class="step-line"></div></div>
+      <div class="step-content"><h4>You get a live link</h4><p>Share your link on Instagram, WhatsApp groups, and Facebook. Customers click → see your menu → order.</p></div>
+    </div>
+    <div class="step-row">
+      <div class="step-left"><div class="step-dot">4</div></div>
+      <div class="step-content"><h4>You keep 100% of your money</h4><p>Orders go straight to your WhatsApp. Customers pay you directly. We only charge N$50/month to keep your site running.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="features-inner">
+    <div class="eyebrow">What's Included</div>
+    <h2 class="heading">Everything You Need</h2>
+    <p class="subtext">No hidden extras. No complicated setup.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><span class="feature-icon">🌐</span><div class="feature-title">Your Own Link</div><div class="feature-desc">Like yourname.netlify.app — yours forever</div></div>
+      <div class="feature-card"><span class="feature-icon">📋</span><div class="feature-title">Menu & Prices</div><div class="feature-desc">No more "price pls" DMs wasting your time</div></div>
+      <div class="feature-card"><span class="feature-icon">📲</span><div class="feature-title">WhatsApp Orders</div><div class="feature-desc">One tap and customer message is ready to send</div></div>
+      <div class="feature-card"><span class="feature-icon">📱</span><div class="feature-title">Works on Phones</div><div class="feature-desc">Loads fast. Works on any phone, any network</div></div>
+      <div class="feature-card"><span class="feature-icon">🔄</span><div class="feature-title">Free Updates</div><div class="feature-desc">Change your prices or menu — just WhatsApp us</div></div>
+      <div class="feature-card"><span class="feature-icon">🇳🇦</span><div class="feature-title">Local Support</div><div class="feature-desc">We're in Namibia. Real support, real people</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <div class="eyebrow">Pricing</div>
+  <h2 class="heading">Simple & Affordable</h2>
+  <p class="subtext">One small investment. Your business online forever.</p>
+  <div class="price-card">
+    <div class="price-badge">Starter Shop</div>
+    <div class="price-amount">N$250 <span>once</span></div>
+    <div class="price-then">Then only N$50/month to stay online</div>
+    <div class="price-includes">
+      <div class="price-item">Your own website link</div>
+      <div class="price-item">Menu with photos & prices</div>
+      <div class="price-item">WhatsApp order button</div>
+      <div class="price-item">Mobile-friendly design</div>
+      <div class="price-item">Live within 24 hours</div>
+      <div class="price-item">Free menu updates anytime</div>
+      <div class="price-item">You keep 100% of your sales</div>
+    </div>
+    <a href="https://wa.me/264857758227?text=Hi!%20I%20want%20to%20get%20my%20online%20shop%20from%20allinone%20trust%20%F0%9F%9A%80%0AMy%20business%3A%20%0AWhat%20I%20sell%3A%20%0ALocation%3A%20" class="btn-main" target="_blank">📲 Start Now on WhatsApp</a>
+  </div>
+</section>
+
+<!-- SHOPS — dynamically loaded from Google Sheets -->
+<section class="shops-section" id="shops">
+  <div class="shops-inner">
+    <div class="eyebrow">Our Shops</div>
+    <h2 class="heading">Businesses Already Online</h2>
+    <p class="subtext">Each business has their own link. Tap to visit their shop.</p>
+
+    <div class="shops-grid" id="shopsGrid">
+      <div class="shops-loading">
+        <div class="spinner"></div>
+        Loading shops...
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <h3>Ready to Get Online?</h3>
+    <p>WhatsApp us now. Tell us your business name and what you sell. We'll have your shop live within 24 hours.</p>
+    <a href="https://wa.me/264857758227?text=Hi!%20I%20want%20to%20get%20my%20online%20shop%20from%20allinone%20trust%20%F0%9F%9A%80%0AMy%20business%3A%20%0AWhat%20I%20sell%3A%20%0ALocation%3A%20" class="btn-white" target="_blank">💬 WhatsApp Us Now</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">allinone<span>trust</span></div>
+  <p class="footer-tagline">Putting Namibian businesses online, one shop at a time 🇳🇦</p>
+  <p class="footer-tagline" style="margin-top:0.3rem;">A 905 Company</p>
+</footer>
+
+<script>
+  // ── GOOGLE SHEETS INTEGRATION ──
+  // Sheet ID from your Google Sheets URL
+  const SHEET_ID = '1NJAxQVikh5ILOJohga8CEbx8OzCqY45BW5o440MsqIU';
+  const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+
+  async function loadShops() {
+    const grid = document.getElementById('shopsGrid');
+
+    try {
+      const response = await fetch(SHEET_URL);
+      const text = await response.text();
+
+      // Google wraps the JSON — strip the wrapper
+      const json = JSON.parse(text.substring(47, text.length - 2));
+      const rows = json.table.rows;
+
+      if (!rows || rows.length === 0) {
+        showEmpty(grid);
+        return;
+      }
+
+      grid.innerHTML = '';
+
+      rows.forEach(row => {
+        const name     = row.c[0]?.v || '';
+        const link     = row.c[1]?.v || '#';
+        const emoji    = row.c[2]?.v || '🏪';
+        const category = row.c[3]?.v || 'Business';
+
+        if (!name) return; // skip empty rows
+
+        const card = document.createElement('a');
+        card.href = link;
+        card.target = '_blank';
+        card.className = 'shop-card';
+        card.innerHTML = `
+          <div class="shop-thumb">${emoji}</div>
+          <div class="shop-info">
+            <div class="shop-name">${name}</div>
+            <div class="shop-category">${category}</div>
+            <div class="shop-status">Live</div>
+          </div>
+          <div class="shop-arrow">→</div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Add join CTA at the bottom
+      const joinCard = document.createElement('a');
+      joinCard.href = "https://wa.me/264857758227?text=Hi!%20I%20want%20to%20get%20my%20online%20shop%20from%20allinone%20trust%20%F0%9F%9A%80%0AMy%20business%3A%20%0AWhat%20I%20sell%3A%20%0ALocation%3A%20";
+      joinCard.target = '_blank';
+      joinCard.className = 'join-card';
+      joinCard.innerHTML = `
+        <div class="join-icon">➕</div>
+        <div class="join-info">
+          <div class="join-title">Your Shop Here</div>
+          <div class="join-sub">Tap to get your own shop — N$250 once</div>
+        </div>
+        <div class="shop-arrow" style="color:var(--sky)">→</div>
+      `;
+      grid.appendChild(joinCard);
+
+    } catch (err) {
+      showEmpty(grid);
+    }
+  }
+
+  function showEmpty(grid) {
+    grid.innerHTML = `
+      <div class="shops-loading">
+        No shops yet — be the first! 👇
+      </div>
+      <a href="https://wa.me/264857758227" target="_blank" class="join-card">
+        <div class="join-icon">➕</div>
+        <div class="join-info">
+          <div class="join-title">Be the First Shop</div>
+          <div class="join-sub">Get your shop online today — N$250</div>
+        </div>
+        <div class="shop-arrow" style="color:var(--sky)">→</div>
+      </a>
+    `;
+  }
+
+  loadShops();
+</script>
+
+</body>
+</html>
