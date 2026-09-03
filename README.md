@@ -1,4 +1,4 @@
-# Vibe Coding Platform
+# allinone trust
 
 An end-to-end coding platform where users enter text prompts and an AI agent generates full-stack applications in a sandboxed environment with live preview, file explorer, and command logs.
 
