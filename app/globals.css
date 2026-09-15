@@ -1,0 +1,37 @@
+  :root{
+    --bg:#111827;
+    --header-bg:#0A0F1E;
+    --card-bg:#131C30;
+    --card-border:#1E2A42;
+    --card-border-hover:#2B3B5C;
+    --blue:#2563EB;
+    --blue-light:#3B82F6;
+    --white:#F5F7FA;
+    --gray:#6B7A99;
+    --gray-light:#9CA8C0;
+    --teal:#14B8A6;
+    --gold:#E8B84B;
+    --radius:20px;
+    --radius-lg:28px;
+    --radius-pill:999px;
+    --ease:cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-card:0 1px 2px rgba(0,0,0,.24), 0 8px 24px -8px rgba(0,0,0,.35);
+    --shadow-elevated:0 4px 12px rgba(0,0,0,.3), 0 16px 40px -12px rgba(0,0,0,.45);
+  }
+  
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    line-height:1.5;
+    letter-spacing:-0.011em;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none; -webkit-tap-highlight-color:transparent;}
+  button, a, .cat-card, .listing-card, .quick-chip, .town-cat-chip{
+    transition:transform .18s var(--ease), opacity .18s var(--ease), background-color .18s var(--ease), border-color .18s var(--ease), box-shadow .18s var(--ease);
+  }
